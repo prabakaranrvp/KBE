@@ -1,60 +1,53 @@
-/* KBE App
- * Resgistry Module
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
  */
 
-// React Components
 import React, { Component } from 'react';
-import {AppRegistry,Navigator,TouchableHighlight,Text} from 'react-native';
+import {
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View
+} from 'react-native';
 
-// App Modules
-import Login from './components/login.js';
-import Home from './components/home.js';
+export default class KBE extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.welcome}>
+          Welcome to React Native!
+        </Text>
+        <Text style={styles.instructions}>
+          To get started, edit index.android.js
+        </Text>
+        <Text style={styles.instructions}>
+          Double tap R on your keyboard to reload,{'\n'}
+          Shake or press menu button for dev menu
+        </Text>
+      </View>
+    );
+  }
+}
 
-
-// Initial Load function
-var KBE = React.createClass({
-
-    render: function() {
-        return (
-            <Navigator
-                initialRoute={{id: 'Login'}}
-                renderScene={this.renderScene}
-                configureScene={(route) => {
-                if (route.sceneConfig) {
-                  return route.sceneConfig;
-                }
-                return Navigator.SceneConfigs.FloatFromRight;
-            }} />
-        );
-    },
-
-    renderScene(route, navigator) {
-        var routeId = route.id;
-        if (routeId === 'Login') {
-            return (
-                <Login navigator={navigator} />
-            );
-        }
-        else if (routeId === 'Home') {
-            return (
-                <Home navigator={navigator} />
-            );
-        }
-        return this.noRoute(navigator);
-    },
-
-    noRoute(navigator) {
-        return (
-            <View style={{flex: 1, alignItems: 'stretch', justifyContent: 'center'}}>
-                <TouchableOpacity style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}
-                    onPress={() => navigator.pop()}>
-                    <Text style={{color: 'red', fontWeight: 'bold'}}>404 Page Not Found</Text>
-                </TouchableOpacity>
-            </View>
-        );
-    }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+  },
 });
-
-
 
 AppRegistry.registerComponent('KBE', () => KBE);
