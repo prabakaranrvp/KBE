@@ -15,14 +15,12 @@ import {
 } from 'react-native';
 
 // React Plugins
-import Icon from 'react-native-vector-icons/FontAwesome';
+//import { Avatar, Icon } from 'react-native-material-design';
 
 // App Modules
 import CommonComponents from './commonComponents.js';
 import Home from './home.js';
-
-// StyleSheet
-import style from '../styles/js/styles.js';
+import Calendar from './calendar.js';
 
 
 // Class : Login
@@ -30,12 +28,10 @@ import style from '../styles/js/styles.js';
 export default class Login extends React.Component {
 
     login() {
-        console.warn(JSON.stringify(this.props.navigator.getCurrentRoutes()));
-        this.props.navigator.replace({
-            id: 'Home',
+        this.props.navigator.push({
+            id: 'Calendar',
             sceneConfig: Navigator.SceneConfigs.HorizontalSwipeJump
         });
-        
     }
 
     render() {
@@ -46,7 +42,7 @@ export default class Login extends React.Component {
 
     renderScene(route, navigator) {
         return (
-            <View style={style.loginPage}>
+            <View style={{flex: 1,backgroundColor:'#efefef'}}>
                 <CommonComponents.Header style={{flex: 1}}/>
                 <View style={{flex: 2,justifyContent:'center',alignItems:'center',marginTop:-100}}>
                     <View style={{ padding:40, alignItems:'center'}}>
@@ -54,21 +50,18 @@ export default class Login extends React.Component {
                             KBE Login
                         </Text>
                         <View style={{flexDirection:'row'}}>
-                            <Icon name="user" style={{marginTop:15,marginRight:5}} size={25} />
                             <TextInput style={{height: 40, marginVertical:10,minWidth:200}} placeholder='UserName' onChangeText={(text) => this.setState({text})} />
                         </View>
                         <View style={{flexDirection:'row'}}>
-                            <Icon name="key" style={{marginTop:15,marginRight:5}}  size={25} />
                             <TextInput style={{height: 40, marginVertical:10,minWidth:200}} secureTextEntry={true} placeholder='Password' onChangeText={(text) => this.setState({text})} />
                         </View>                        
-                            <Icon.Button
-                                name="sign-in"
+                            <Button
+                                containerStyle={{padding:40,width:100}}
                                 onPress={this.login.bind(this)}
-                                backgroundColor="#73baf5"
-                                color="#fff"
-                            >
-                             <Text style={{fontFamily: 'Arial', fontSize: 18, color:"#fff", fontWeight:"bold"}}>Login</Text>
-                            </Icon.Button>
+                                title="Login"
+                                color="#73baf5"
+                                accessibilityLabel="Learn more about this purple button"
+                            />
                     </View>
                 </View>   
             </View>

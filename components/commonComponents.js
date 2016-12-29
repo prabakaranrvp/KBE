@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 
 // React Plugins
-// import { Avatar, Icon } from 'react-native-material-design';
+//import { Avatar, Icon } from 'react-native-material-design';
 
 
 var Header = React.createClass({
@@ -25,20 +25,20 @@ var Header = React.createClass({
     }
 });
 
-// var Footer = React.createClass({
-//     render: function() {
-//         return (
-//             <View style={styles.footer}>
-//                 <View onPress={this.dispIconName}>
-//                     <Icon name="edit" style={styles.footerIcon} />
-//                 </View>
-//                 <Icon name="person" style={styles.footerIcon} />
-//                 <Icon name="folder" style={styles.footerIcon} />
-//                 <Icon name="folder" style={styles.footerIcon} />
-//             </View>
-//         );
-//     }
-// })
+/*var Footer = React.createClass({
+    render: function() {
+        return (
+            <View style={styles.footer}>
+                <View onPress={this.dispIconName}>
+                    <Icon name="edit" style={styles.footerIcon} />
+                </View>
+                <Icon name="person" style={styles.footerIcon} />
+                <Icon name="folder" style={styles.footerIcon} />
+                <Icon name="folder" style={styles.footerIcon} />
+            </View>
+        );
+    }
+})*/
 
 
 const styles = StyleSheet.create({
@@ -62,4 +62,5 @@ const styles = StyleSheet.create({
 });
 
 
-module.exports ={ Header : Header};
+module.exports ={ Header : Header/*,
+    Footer: Footer*/};

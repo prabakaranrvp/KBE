@@ -9,10 +9,10 @@ import {AppRegistry,Navigator,TouchableHighlight,Text} from 'react-native';
 // App Modules
 import Login from './components/login.js';
 import Home from './components/home.js';
-
+import Calendar from './components/calendar.js';
 
 // Initial Load function
-var KBE = React.createClass({
+var KBESample = React.createClass({
 
     render: function() {
         return (
@@ -40,6 +40,11 @@ var KBE = React.createClass({
                 <Home navigator={navigator} />
             );
         }
+        else if (routeId === 'Calendar') {
+            return (
+                <Calendar navigator={navigator} />
+            );
+        }
         return this.noRoute(navigator);
     },
 
@@ -57,4 +62,4 @@ var KBE = React.createClass({
 
 
 
-AppRegistry.registerComponent('KBE', () => KBE);
+AppRegistry.registerComponent('AwesomeProject', () => KBESample);
