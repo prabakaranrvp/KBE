@@ -8,6 +8,7 @@ import {
     StyleSheet,
     Text,
     View,
+    StatusBar,
     TouchableHighlight
 } from 'react-native';
 
@@ -17,8 +18,15 @@ import {
 
 var Header = React.createClass({
     render: function() {
+        this.state = {translucent : false,statusBarHidden: true};
         return (
             <View style={styles.header}>
+
+             <StatusBar
+     backgroundColor="#003d73"
+     barStyle="light-content"
+     translucent={this.state.translucent}
+   />
                 <Text style={styles.headerTitle}>KBE</Text>
             </View>
         );
@@ -44,11 +52,11 @@ var Header = React.createClass({
 const styles = StyleSheet.create({
     header: {
         paddingVertical: 10,
-        backgroundColor: '#ccc'
+        backgroundColor: '#003d73'
     },
     headerTitle: {
         textAlign: 'center',
-        color: '#000',
+        color: '#fff',
         fontWeight: 'bold',
         fontSize: 20,
     },

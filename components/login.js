@@ -30,7 +30,6 @@ import style from '../styles/js/styles.js';
 export default class Login extends React.Component {
 
     login() {
-        console.warn(JSON.stringify(this.props.navigator.getCurrentRoutes()));
         this.props.navigator.replace({
             id: 'Home',
             sceneConfig: Navigator.SceneConfigs.HorizontalSwipeJump
@@ -46,7 +45,7 @@ export default class Login extends React.Component {
 
     renderScene(route, navigator) {
         return (
-            <View style={style.loginPage}>
+            <View style={{flex:1}}>
                 <CommonComponents.Header style={{flex: 1}}/>
                 <View style={{flex: 2,justifyContent:'center',alignItems:'center',marginTop:-100}}>
                     <View style={{ padding:40, alignItems:'center'}}>

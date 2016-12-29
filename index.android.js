@@ -15,6 +15,7 @@ import Home from './components/home.js';
 var KBE = React.createClass({
 
     render: function() {
+
         return (
             <Navigator
                 initialRoute={{id: 'Login'}}
