@@ -18,7 +18,6 @@ import CommonComponents from './commonComponents.js';
 
 //React 3rd Party 
 import moment from 'moment';
-import style from '../styles/js/style.js';
 
 //Class : Calendar
 //To Show Calendar for the logged user and to Render events on dates
@@ -50,7 +49,7 @@ export default class Calendar extends React.Component {
 
     render() {
         return( 
-        	<View style={style.header}>
+        	<View>
 	            <View>	                
 	                {this.renderMonthLabel()}
 	            </View>
@@ -86,14 +85,14 @@ export default class Calendar extends React.Component {
 var DayNames = React.createClass({
     render() {
         return( 
-        	<View style={style.weekNames}>
-	            <Text style={style.day}>Sun</Text>
-	            <Text style={style.day}>Mon</Text>
-	            <Text style={style.day}>Tue</Text>
-	            <Text style={style.day}>Wed</Text>
-	            <Text style={style.day}>Thu</Text>
-	            <Text style={style.day}>Fri</Text>
-	            <Text style={style.day}>Sat</Text>
+        	<View>
+	            <Text>Sun</Text>
+	            <Text>Mon</Text>
+	            <Text>Tue</Text>
+	            <Text>Wed</Text>
+	            <Text>Thu</Text>
+	            <Text>Fri</Text>
+	            <Text>Sat</Text>
         	</View>
         );
     }
@@ -113,12 +112,12 @@ var Week = React.createClass({
                 isToday: date.isSame(new Date(), "day"),
                 date: date
             };
-            days.push(<Text key={day.date.toString()} style={"day" + (day.isToday ? " today" : "") + (day.isCurrentMonth ? "" : " different-month") + (day.date.isSame(this.props.selected) ? " selected" : "")} onClick={this.props.select.bind(null, day)}>{day.number}</Text>);
+            days.push(<Text key={day.date.toString()} className={"day" + (day.isToday ? " today" : "") + (day.isCurrentMonth ? "" : " different-month") + (day.date.isSame(this.props.selected) ? " selected" : "")} onClick={this.props.select.bind(null, day)}>{day.number}</Text>);
             date = date.clone();
             date.add(1, "d");
 
         }
 
-        return (<View style={style.week} key={days[0].toString()}>{days}</View>);
+        return (<View key={days[0].toString()}>{days}</View>);
     }
 });

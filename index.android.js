@@ -62,4 +62,4 @@ var KBESample = React.createClass({
 
 
 
-AppRegistry.registerComponent('AwesomeProject', () => KBESample);
+AppRegistry.registerComponent('KBE', () => KBESample);
