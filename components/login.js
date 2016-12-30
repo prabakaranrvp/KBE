@@ -20,7 +20,7 @@ import {
 // App Modules
 import CommonComponents from './commonComponents.js';
 import Home from './home.js';
-import Calendar from './calendar.js';
+import Calendar from './dummyCalendar.js';
 
 
 // Class : Login

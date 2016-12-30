@@ -9,7 +9,7 @@ import {AppRegistry,Navigator,TouchableHighlight,Text} from 'react-native';
 // App Modules
 import Login from './components/login.js';
 import Home from './components/home.js';
-import Calendar from './components/calendar.js';
+import Calendar from './components/dummyCalendar.js';
 
 // Initial Load function
 var KBESample = React.createClass({
