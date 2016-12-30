@@ -46,7 +46,7 @@ export default class Login extends React.Component {
 
     renderScene(route, navigator) {
         return (
-            <View style={style.loginPage}>
+            <View style={{flex:1}}>
                 <CommonComponents.Header style={{flex: 1}}/>
                 <View style={{flex: 2,justifyContent:'center',alignItems:'center',marginTop:-100}}>
                     <View style={{ padding:40, alignItems:'center'}}>
