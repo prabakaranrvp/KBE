@@ -28,7 +28,10 @@ Running on IOS :
 
 [Vector Icons](https://github.com/oblador/react-native-vector-icons):
 
-`npm install -g react-native-vector-icons --save`
+	npm install -g react-native-vector-icons --save
+
+	react-native link react-native-vector-icons
+
 
 [CSS Compilation](https://github.com/sabeurthabti/react-native-css)
 
