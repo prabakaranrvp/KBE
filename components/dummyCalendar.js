@@ -1,3 +1,8 @@
+/*  Module Name : Calendar
+ *  Description : Screen for the user logged in, to view his projects on calendar
+ */
+
+// React Components
 import React, { Component } from 'react';
 import {
   AppRegistry,

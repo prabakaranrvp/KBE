@@ -21,6 +21,7 @@ import {
 import CommonComponents from './commonComponents.js';
 import Home from './home.js';
 import Calendar from './dummyCalendar.js';
+import DigiSign from './digiSign.js';
 
 
 // Class : Login
@@ -29,7 +30,7 @@ export default class Login extends React.Component {
 
     login() {
         this.props.navigator.push({
-            id: 'Calendar',
+            id: 'DigiSign',
             sceneConfig: Navigator.SceneConfigs.HorizontalSwipeJump
         });
     }

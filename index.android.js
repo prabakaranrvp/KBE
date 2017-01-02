@@ -10,6 +10,7 @@ import {AppRegistry,Navigator,TouchableHighlight,Text} from 'react-native';
 import Login from './components/login.js';
 import Home from './components/home.js';
 import Calendar from './components/dummyCalendar.js';
+import DigiSign from './components/digiSign.js';
 
 // Initial Load function
 var KBESample = React.createClass({
@@ -41,6 +42,11 @@ var KBESample = React.createClass({
             );
         }
         else if (routeId === 'Calendar') {
+            return (
+                <Calendar navigator={navigator} />
+            );
+        }
+        else if (routeId === 'DigiSign') {
             return (
                 <Calendar navigator={navigator} />
             );

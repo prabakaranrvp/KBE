@@ -1,5 +1,5 @@
 /*  Module Name : Home
- *  Description : Home Screen for user logging in
+ *  Description : Home Screen for user logged in
  */
 
 // React Components
