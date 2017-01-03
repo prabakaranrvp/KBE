@@ -8,7 +8,8 @@ import {
   Dimensions,
   StyleSheet,
   Text,
-  View
+  View,
+  TouchableHighlight
 } from 'react-native';
 
 // App Modules
@@ -41,7 +42,7 @@ RNSignatureExample = React.createClass({
             <View style={{ flex: 1, flexDirection: "column" }}>
                 <Text style={{alignItems:"center",justifyContent:"center"}}>Signature Capture Extended </Text>
                 <SignatureCapture
-                    style={[{flex:1},styles.signature]}
+                    style={[{flex:1},digiStyles.signature]}
                     ref="sign"
                     onSaveEvent={this._onSaveEvent}
                     onDragEvent={this._onDragEvent}
@@ -80,7 +81,5 @@ const digiStyles = StyleSheet.create({
         margin: 10
     }
 });
-
-//AppRegistry.registerComponent('RNSignatureExample', () => RNSignatureExample);
 
 module.exports = RNSignatureExample;

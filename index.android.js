@@ -1,16 +1,17 @@
 /* KBE App
- * Resgistry Module
+ * Registry Module
  */
 
 // React Components
 import React, { Component } from 'react';
-import {AppRegistry,Navigator,TouchableHighlight,Text} from 'react-native';
+import {AppRegistry,Navigator,TouchableHighlight,Text,View,TouchableOpacity} from 'react-native';
 
 // App Modules
 import Login from './components/login.js';
 import Home from './components/home.js';
 import Calendar from './components/dummyCalendar.js';
 import DigiSign from './components/digiSign.js';
+import PdfGen from './components/pdfGen.js';
 
 // Initial Load function
 var KBESample = React.createClass({
@@ -48,7 +49,12 @@ var KBESample = React.createClass({
         }
         else if (routeId === 'DigiSign') {
             return (
-                <Calendar navigator={navigator} />
+                <DigiSign navigator={navigator} />
+            );
+        }
+        else if (routeId === 'PdfGen') {
+            return (
+                <PdfGen navigator={navigator} />
             );
         }
         return this.noRoute(navigator);
@@ -65,7 +71,5 @@ var KBESample = React.createClass({
         );
     }
 });
-
-
 
 AppRegistry.registerComponent('KBE', () => KBESample);

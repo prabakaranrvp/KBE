@@ -10,29 +10,34 @@ import {
   Dimensions,
   StyleSheet,
   Text,
-  View
+  View,
+  TouchableHighlight
 } from 'react-native';
+
+// App Modules
+import CommonComponents from './commonComponents.js';
 
 import RNHTMLtoPDF from 'react-native-html-to-pdf';
 
-var Example = React.createClass({
+export default class PdfGenerator extends React.Component {
 
   createPDF() {
     var options = {
-      html: '<h1>PDF TEST</h1>', // HTML String
-
+      html: '<h1>PDF TEST</h1>' // HTML String
     };
 
     RNHTMLtoPDF.convert(options).then((filePath) => {
       console.log(filePath);
     });
-  },
+  }
 
   render() {
-    <View>
-      <TouchableHighlight onPress={this.createPDF}>
-        <Text>Create PDF</Text>
-      </TouchableHighlight>
-    </View>
+    return(
+      <View>
+        <TouchableHighlight onPress={() => { this.createPDF() }}>
+          <Text>Create PDF</Text>
+        </TouchableHighlight>
+      </View>
+    );
   }
-});
+};
