@@ -12,6 +12,7 @@ import Home from './components/home.js';
 import Calendar from './components/dummyCalendar.js';
 import DigiSign from './components/digiSign.js';
 import PdfGen from './components/pdfGen.js';
+import SignPad from './components/SignPad.js';
 
 // Initial Load function
 var KBESample = React.createClass({
@@ -55,6 +56,11 @@ var KBESample = React.createClass({
         else if (routeId === 'PdfGen') {
             return (
                 <PdfGen navigator={navigator} />
+            );
+        }
+        else if (routeId === 'SignPad') {
+            return (
+                <SignPad navigator={navigator} />
             );
         }
         return this.noRoute(navigator);

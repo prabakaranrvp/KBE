@@ -12,6 +12,7 @@
     "react-native-calendar-picker": "^3.0.0",
     "react-native-html-to-pdf": "^0.2.0",
     "react-native-signature-capture": "^0.4.3",
+    "react-native-signature-pad": "0.0.8",
     "react-native-vector-icons": "^3.0.0"
   },
   "devDependencies": {

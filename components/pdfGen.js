@@ -23,7 +23,7 @@ export default class PdfGenerator extends React.Component {
 
   createPDF() {
     var options = {
-      html: '<h1>PDF TEST</h1>' // HTML String
+      html: "<h2>Test Image</h2><img src=\"/storage/emulated/0/saved_signature/signature.png\"/><p>EndOf Image</p>" // HTML String
     };
 
     RNHTMLtoPDF.convert(options).then((filePath) => {

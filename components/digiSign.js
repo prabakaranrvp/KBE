@@ -18,10 +18,13 @@ import CommonComponents from './commonComponents.js';
 var SignatureCapture = require('react-native-signature-capture'),
     RNSignatureExample;
 
+import RNHTMLtoPDF from 'react-native-html-to-pdf';
+
 RNSignatureExample = React.createClass({
 
     saveSign: function() {
         this.refs["sign"].saveImage();
+        console.log("I am Save function");        
     },
 
     resetSign: function() {
@@ -32,6 +35,14 @@ RNSignatureExample = React.createClass({
         //result.encoded - for the base64 encoded png
         //result.pathName - for the file path name
         console.log(result);
+        console.log("I am Save Event"); 
+        var options = {
+          html: "<h2>Test Image</h2><img src='" + result.pathName + "' /><p>EndOf Image</p>" // HTML String
+        };
+        console.log(options);      
+        RNHTMLtoPDF.convert(options).then((filePath) => {
+          console.log(filePath);
+        });
     },
     _onDragEvent() {
          // This callback will be called when the user enters signature
@@ -46,7 +57,7 @@ RNSignatureExample = React.createClass({
                     ref="sign"
                     onSaveEvent={this._onSaveEvent}
                     onDragEvent={this._onDragEvent}
-                    saveImageFileInExtStorage={false}
+                    saveImageFileInExtStorage={true}
                     showNativeButtons={false}
                     viewMode={"portrait"}/>
 

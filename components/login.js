@@ -23,14 +23,15 @@ import Home from './home.js';
 import Calendar from './dummyCalendar.js';
 import DigiSign from './digiSign.js';
 import PdfGen from './pdfGen.js';
+import SignPad from './SignPad.js';
 
 // Class : Login
 // Holds the Login Elements and Functionalities
 export default class Login extends React.Component {
 
     login() {
-        this.props.navigator.push({
-            id: 'PdfGen',
+        this.props.navigator.replace({
+            id: 'DigiSign',
             sceneConfig: Navigator.SceneConfigs.HorizontalSwipeJump
         });
     }
