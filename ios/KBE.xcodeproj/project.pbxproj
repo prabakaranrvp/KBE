@@ -35,6 +35,7 @@
 		02602CED1A5D4FCB85A37D2F /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42267B30104D4AFA81F59EC4 /* Zocial.ttf */; };
 		757FBCACCCDA4EA78C55CD26 /* libRSSignatureCapture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4265963CCE4B598F3B9285 /* libRSSignatureCapture.a */; };
 		B6D95DDB12DA4C5F96E94A97 /* libRNHTMLtoPDF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44DFCF29296E497297C4E6A4 /* libRNHTMLtoPDF.a */; };
+		C74B4144421C40B4BD772FE2 /* libRNFS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D61CA2F9B99494CA1E0016A /* libRNFS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +170,8 @@
 		7B4265963CCE4B598F3B9285 /* libRSSignatureCapture.a */ = {isa = PBXFileReference; name = "libRSSignatureCapture.a"; path = "libRSSignatureCapture.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		DF7C48D2497744CB9AAFE83C /* RNHTMLtoPDF.xcodeproj */ = {isa = PBXFileReference; name = "RNHTMLtoPDF.xcodeproj"; path = "../node_modules/react-native-html-to-pdf/RNHTMLtoPDF.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		44DFCF29296E497297C4E6A4 /* libRNHTMLtoPDF.a */ = {isa = PBXFileReference; name = "libRNHTMLtoPDF.a"; path = "libRNHTMLtoPDF.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		1ABFD7C54B5C4357A2DD9272 /* RNFS.xcodeproj */ = {isa = PBXFileReference; name = "RNFS.xcodeproj"; path = "../node_modules/react-native-fs/RNFS.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		7D61CA2F9B99494CA1E0016A /* libRNFS.a */ = {isa = PBXFileReference; name = "libRNFS.a"; path = "libRNFS.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +201,7 @@
 				F77BC09DD02A44E9B53DE003 /* libRNVectorIcons.a in Frameworks */,
 				757FBCACCCDA4EA78C55CD26 /* libRSSignatureCapture.a in Frameworks */,
 				B6D95DDB12DA4C5F96E94A97 /* libRNHTMLtoPDF.a in Frameworks */,
+				C74B4144421C40B4BD772FE2 /* libRNFS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +337,7 @@
 				003ACBF1158E4095A1214E4A /* RNVectorIcons.xcodeproj */,
 				C0F16527BD214903BA3E1DF8 /* RSSignatureCapture.xcodeproj */,
 				DF7C48D2497744CB9AAFE83C /* RNHTMLtoPDF.xcodeproj */,
+				1ABFD7C54B5C4357A2DD9272 /* RNFS.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -694,6 +699,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -710,6 +716,7 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KBE.app/KBE";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -793,6 +800,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-signature-capture\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-html-to-pdf\RNHTMLtoPDF/**",
+					"$(SRCROOT)\..\node_modules\react-native-fs/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -836,6 +844,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-signature-capture\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-html-to-pdf\RNHTMLtoPDF/**",
+					"$(SRCROOT)\..\node_modules\react-native-fs/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;

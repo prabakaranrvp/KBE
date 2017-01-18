@@ -14,17 +14,16 @@ import {
 
 // App Modules
 import CommonComponents from './commonComponents.js';
+import RNHTMLtoPDF from 'react-native-html-to-pdf';
+import RNFS from 'react-native-fs';
 
 var SignatureCapture = require('react-native-signature-capture'),
     RNSignatureExample;
-
-import RNHTMLtoPDF from 'react-native-html-to-pdf';
 
 RNSignatureExample = React.createClass({
 
     saveSign: function() {
         this.refs["sign"].saveImage();
-        console.log("I am Save function");        
     },
 
     resetSign: function() {
@@ -34,18 +33,27 @@ RNSignatureExample = React.createClass({
     _onSaveEvent(result) {
         //result.encoded - for the base64 encoded png
         //result.pathName - for the file path name
-        console.log(result);
-        console.log("I am Save Event"); 
-        var options = {
-          html: "<h2>Test Image</h2><img src='" + result.pathName + "' /><p>EndOf Image</p>" // HTML String
+
+        var path = result.pathName; //assigning the path of signature generated 
+
+        var options = { //Stores the content for PDF
+          html: "<h2>Test Image</h2><img src='" + path + "' /><p>EndOf Image</p>" // HTML String
         };
-        console.log(options);      
-        RNHTMLtoPDF.convert(options).then((filePath) => {
-          console.log(filePath);
+
+        RNHTMLtoPDF.convert(options).then((filePath) => { //Generates pdf
+          return RNFS.unlink(path)
+            .then(() => { //On successful deletion of image
+              //Rename the generated pdf filename
+              RNFS.moveFile( filePath, filePath.replace('MyPdf.pdf','AMC001.pdf'));
+            })
+            // `unlink` will throw an error, if the item to unlink does not exist
+            .catch((err) => {
+              console.log(err.message);
+            });
         });
     },
     _onDragEvent() {
-         // This callback will be called when the user enters signature
+        // This callback will be called when the user enters signature
         console.log("dragged");
     },
     render() {
