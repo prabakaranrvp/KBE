@@ -2,6 +2,7 @@
  *  Description : Component deals with generation of digital signatures
  */
 
+// React Components
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -14,22 +15,20 @@ import {
 
 // App Modules
 import CommonComponents from './commonComponents.js';
+
+//Third Party Plugins
 import RNHTMLtoPDF from 'react-native-html-to-pdf';
 import RNFS from 'react-native-fs';
+import SignatureCapture from 'react-native-signature-capture';
 
-var SignatureCapture = require('react-native-signature-capture'),
-    RNSignatureExample;
+export default class signPad extends React.Component {
 
-RNSignatureExample = React.createClass({
-
-    saveSign: function() {
+    saveSign() {
         this.refs["sign"].saveImage();
-    },
-
-    resetSign: function() {
+    }
+    resetSign() {
         this.refs["sign"].resetImage();
-    },
-
+    }
     _onSaveEvent(result) {
         //result.encoded - for the base64 encoded png
         //result.pathName - for the file path name
@@ -51,11 +50,11 @@ RNSignatureExample = React.createClass({
               console.log(err.message);
             });
         });
-    },
+    }
     _onDragEvent() {
         // This callback will be called when the user enters signature
         console.log("dragged");
-    },
+    }
     render() {
         return (
             <View style={{ flex: 1, flexDirection: "column" }}>
@@ -86,7 +85,7 @@ RNSignatureExample = React.createClass({
         );
     }
 
-});
+};
 
 const digiStyles = StyleSheet.create({
     signature: {
@@ -100,5 +99,3 @@ const digiStyles = StyleSheet.create({
         margin: 10
     }
 });
-
-module.exports = RNSignatureExample;

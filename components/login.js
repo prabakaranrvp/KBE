@@ -20,10 +20,9 @@ import {
 // App Modules
 import CommonComponents from './commonComponents.js';
 import Home from './home.js';
-import Calendar from './dummyCalendar.js';
+import Calendar from './calendar.js';
 import DigiSign from './digiSign.js';
-import PdfGen from './pdfGen.js';
-import SignPad from './SignPad.js';
+import TabView from './tabView.js';
 
 // Class : Login
 // Holds the Login Elements and Functionalities
@@ -31,7 +30,7 @@ export default class Login extends React.Component {
 
     login() {
         this.props.navigator.replace({
-            id: 'DigiSign',
+            id: 'TabView',
             sceneConfig: Navigator.SceneConfigs.HorizontalSwipeJump
         });
     }

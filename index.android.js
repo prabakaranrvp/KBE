@@ -9,10 +9,9 @@ import {AppRegistry,Navigator,TouchableHighlight,Text,View,TouchableOpacity} fro
 // App Modules
 import Login from './components/login.js';
 import Home from './components/home.js';
-import Calendar from './components/dummyCalendar.js';
+import Calendar from './components/calendar.js';
 import DigiSign from './components/digiSign.js';
-import PdfGen from './components/pdfGen.js';
-import SignPad from './components/SignPad.js';
+import TabView from './components/tabView.js';
 
 // Initial Load function
 var KBESample = React.createClass({
@@ -53,14 +52,9 @@ var KBESample = React.createClass({
                 <DigiSign navigator={navigator} />
             );
         }
-        else if (routeId === 'PdfGen') {
+        else if (routeId === 'TabView') {
             return (
-                <PdfGen navigator={navigator} />
-            );
-        }
-        else if (routeId === 'SignPad') {
-            return (
-                <SignPad navigator={navigator} />
+                <TabView navigator={navigator} />
             );
         }
         return this.noRoute(navigator);

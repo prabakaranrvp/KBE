@@ -17,7 +17,6 @@ import {
 // App Modules
 import CommonComponents from './commonComponents.js';
 
-
 // Class : Home
 // Holds the Home Elements and Functionalities
 export default class Home extends React.Component {
