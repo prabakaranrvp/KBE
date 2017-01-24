@@ -11,7 +11,11 @@ import {
     View,
     TouchableHighlight,
     Button,
-    Navigator
+    Navigator,
+    StatusBar,
+    AsyncStorage,
+    ToastAndroid,
+    Image
 } from 'react-native';
 
 // React Plugins
@@ -28,46 +32,84 @@ import style from '../styles/js/styles.js';
 // Class : Login
 // Holds the Login Elements and Functionalities
 export default class Login extends React.Component {
+    constructor(props) {
+      super(props);
+    
+      this.state = {usernm:"",passwd:"",translucent : true};
+    }
 
     login() {
-        this.props.navigator.replace({
-            id: 'Home',
-            sceneConfig: Navigator.SceneConfigs.HorizontalSwipeJump
-        });
+        if(this.state.usernm=="user" && this.state.passwd=="abcd1234") {
+            AsyncStorage.setItem('isLoggedIn','true');
+            this.props.navigator.replace({
+                id: 'Home',
+                sceneConfig: Navigator.SceneConfigs.HorizontalSwipeJump
+            });
+        }
+        else {
+            ToastAndroid.show('Invalid Username or Password', ToastAndroid.SHORT);
+        }
         
     }
 
     render() {
         return (
-          <Navigator renderScene={this.renderScene.bind(this)} />
+          <Navigator ref="navigator" renderScene={this.renderScene.bind(this)} />
         );
     }
 
     renderScene(route, navigator) {
+        let loginButton = null;
+        if(this.state.usernm!="" && this.state.passwd!=""){
+
+            loginButton =  (<View style={{marginTop:30}} >                 
+                                
+                            </View>)
+        }
         return (
-            <View style={{flex:1}}>
-                <CommonComponents.Header style={{flex: 1}}/>
-                <View style={{flex: 2,justifyContent:'center',alignItems:'center',marginTop:-100}}>
-                    <View style={{ padding:40, alignItems:'center'}}>
-                        <Text style={{marginBottom:15}}>
-                            KBE Login
-                        </Text>
-                        <View style={{flexDirection:'row'}}>
-                            <Icon name="user" style={{marginTop:15,marginRight:5}} size={25} />
-                            <TextInput style={{height: 40, marginVertical:10,minWidth:200}} placeholder='UserName' onChangeText={(text) => this.setState({text})} />
+            <View style={{flex:1,backgroundColor:'#E4E4E4'}}>
+                <StatusBar
+                    backgroundColor="#E4E4E4"
+                    barStyle="dark-content"
+                />
+                <View style={{marginHorizontal:20,marginVertical:100,justifyContent:'center',alignItems:'center',backgroundColor:'#fff',elevation:15}}>
+                    <View style={{ padding:30, alignItems:'center'}}>
+                        <Image source={require('../images/logo.jpg')} />
+                        <View style={{flexDirection:'row',paddingVertical:20}}>
+                            <View style={{flex:1,flexDirection:'row',alignItems:'center',justifyContent:'flex-end',alignItems: 'stretch'}}>
+                                <TextInput style={{flexGrow:15,fontSize:18,fontFamily:'Open Sans',backgroundColor:'#ddd',paddingHorizontal:20,paddingVertical:8}} 
+                                    returnKeyType = {"next"}
+                                    placeholderTextColor='#fff' 
+                                    underlineColorAndroid='#ddd' 
+                                    placeholder='email' 
+                                    onChangeText={(text) => this.setState({usernm:text})} 
+                                    onSubmitEditing={() => {this.refs.navigator.refs['passwdInput'].focus();}}
+                                />
+                            </View>
                         </View>
-                        <View style={{flexDirection:'row'}}>
-                            <Icon name="key" style={{marginTop:15,marginRight:5}}  size={25} />
-                            <TextInput style={{height: 40, marginVertical:10,minWidth:200}} secureTextEntry={true} placeholder='Password' onChangeText={(text) => this.setState({text})} />
-                        </View>                        
-                            <Icon.Button
+                        <View style={{flexDirection:'row',paddingVertical:20}}>
+                            <View style={{flex:1,flexDirection:'row',alignItems:'center',justifyContent:'flex-end',alignItems: 'stretch'}}>
+                                <TextInput style={{flexGrow:15,fontSize:18,fontFamily:'Open Sans',backgroundColor:'#ddd',paddingHorizontal:20,paddingVertical:8}} 
+                                    ref="passwdInput"
+                                    underlineColorAndroid='#ddd' 
+                                    secureTextEntry={true} 
+                                    placeholderTextColor='#fff' 
+                                    placeholder='password' 
+                                    onChangeText={(text) => this.setState({passwd:text})}
+                                    onSubmitEditing={() => this.login()} />
+                            </View> 
+                        </View> 
+                        <View style={{flexDirection: 'row', justifyContent: 'space-between',marginTop:15}}>
+                            <Button
                                 name="sign-in"
                                 onPress={this.login.bind(this)}
-                                backgroundColor="#73baf5"
-                                color="#fff"
-                            >
-                             <Text style={{fontFamily: 'Arial', fontSize: 18, color:"#fff", fontWeight:"bold"}}>Login</Text>
-                            </Icon.Button>
+                                title="Login"
+                                color="#EE4AA3"
+                                accessibilityLabel="Log in"
+                                style={{flex:3,width:300}}>
+                            </Button>
+                        </View>
+                       
                     </View>
                 </View>   
             </View>

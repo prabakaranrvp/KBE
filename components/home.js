@@ -13,19 +13,88 @@ import {
     Button,
     Navigator,
     StatusBar,
-    ScrollView
+    ScrollView,
+    ToastAndroid,
+    DrawerLayoutAndroid
 } from 'react-native';
 
 // App Modules
 import CommonComponents from './commonComponents.js';
-
+import FCM from 'react-native-fcm';
 
 // Class : Home
 // Holds the Home Elements and Functionalities
 export default class Home extends React.Component {
+    constructor(props) {
+      super(props);
+    
+      this.state = {initialPosition:"",currentPosition:""};
+      // navigator.geolocation.watchPosition(
+      //     (position) => {
+      //       // alert(JSON.stringify(position));
+      //       var initialPosition = JSON.stringify(position);
+      //       // this.setState({initialPosition});
+      //       // console.warn(initialPosition);
+      //       ToastAndroid.show(JSON.stringify(position),ToastAndroid.LONG);
+      //     },
+      //     (error) => alert(JSON.stringify(error)),
+      //     {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+      //   );
+
+     
+    }
+    componentDidMount() {
+    FCM.requestPermissions();
+    // FCM.presentLocalNotification({
+    //   title: '',
+    //   body: 'notif.body',
+    //   priority: "high",
+    //   click_action: 'notif.click_action',
+    //   show_in_foreground: true,
+    //   local: true
+    // });
+
+    FCM.getFCMToken().then(token => {
+      console.log("TOKEN (getFCMToken)", token);
+      // this.props.onChangeToken(token);
+    });
+
+    FCM.getInitialNotification().then(notif => {
+      console.log("INITIAL NOTIFICATION", notif)
+    });
+
+    this.notificationUnsubscribe = FCM.on("notification", notif => {
+        // alert("notified");
+      console.log("Notification", notif);
+      if (notif && notif.local) {
+        return;
+      }
+      this.sendRemote(notif.fcm);
+    });
+
+    this.refreshUnsubscribe = FCM.on("refreshToken", token => {
+      console.log("TOKEN (refreshUnsubscribe)", token);
+      // this.props.onChangeToken(token);
+    });
+  }
+sendRemote(notif) {
+    FCM.presentLocalNotification({
+      title: notif.title || 'KBE',
+      body: notif.body,
+      priority: "high",
+      click_action: notif.click_action,
+      show_in_foreground: true,
+      local: true
+    });
+  }
+
+  componentWillUnmount() {
+    this.refreshUnsubscribe();
+    this.notificationUnsubscribe();
+  }
+
 
     goBack() {
-        console.log(this.props.navigator);
         this.props.navigator.pop();
     }
     render() {
@@ -34,29 +103,20 @@ export default class Home extends React.Component {
         );
     }
     renderScene(route, navigator) {
-        return (
-            <View style={{flex: 1,backgroundColor:'#efefef'}}>
-            
-                <CommonComponents.Header style={{flex: 1}}/>
-                <ScrollView style={{flex: 1}}>
-                    
-                    
-                    <Text style={{flex:14,paddingVertical:25,paddingHorizontal:10,fontSize:18,backgroundColor:'#ff4001'}}>Color Palletes</Text>
-                    <Text style={{flex:14,paddingVertical:25,paddingHorizontal:10,fontSize:18,backgroundColor:'#ff7f00',shadowColor:'#999'}}>Color Palletes</Text>
-                    <Text style={{flex:14,paddingVertical:25,paddingHorizontal:10,fontSize:18,backgroundColor:'#ffc000'}}>Color Palletes</Text>
-                    <Text style={{flex:14,paddingVertical:25,paddingHorizontal:10,fontSize:18,backgroundColor:'#ffff01'}}>Color Palletes</Text>
-                    <Text style={{flex:14,paddingVertical:25,paddingHorizontal:10,fontSize:18,backgroundColor:'#c0ff00'}}>Color Palletes</Text>
-                    <Text style={{flex:14,paddingVertical:25,paddingHorizontal:10,fontSize:18,backgroundColor:'#40ff01'}}>Color Palletes</Text>
-
-                    <Text style={{flex:14,paddingVertical:25,paddingHorizontal:10,fontSize:18,backgroundColor:'#01ffff'}}>Color Palletes</Text>
-                    <Text style={{flex:14,paddingVertical:25,paddingHorizontal:10,fontSize:18,backgroundColor:'#53c0f0'}}>Color Palletes</Text>
-                    <Text style={{flex:14,paddingVertical:25,paddingHorizontal:10,fontSize:18,backgroundColor:'#2875c7'}}>Color Palletes</Text>
-                    <Text style={{flex:14,paddingVertical:25,paddingHorizontal:10,fontSize:18,backgroundColor:'#545454'}}>Color Palletes</Text>
-                    <Text style={{flex:14,paddingVertical:25,paddingHorizontal:10,fontSize:18,backgroundColor:'#a8a8a8'}}>Color Palletes</Text>
-                    <Text style={{flex:14,paddingVertical:25,paddingHorizontal:10,fontSize:18,backgroundColor:'#dddddd'}}>Color Palletes</Text>
-                </ScrollView>  
-                
+        var navigationView = (
+            <View style={{flex: 1, backgroundColor: '#fff'}}>
+              <Text style={{margin: 10, fontSize: 15, textAlign: 'left'}}>I'm in the Drawer!</Text>
             </View>
+          );
+        return (
+            <DrawerLayoutAndroid
+              drawerWidth={300}
+              drawerPosition={DrawerLayoutAndroid.positions.Left}
+              renderNavigationView={() => navigationView}>
+                    <View style={{flex: 1,backgroundColor:'#efefef'}}>
+                        <CommonComponents.Header style={{flex: 1}} navigator={navigator}/>
+                    </View>
+            </DrawerLayoutAndroid>
         )
     }
 };
