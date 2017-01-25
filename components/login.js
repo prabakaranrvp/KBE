@@ -23,6 +23,7 @@ import Home from './home.js';
 import Calendar from './calendar.js';
 import DigiSign from './digiSign.js';
 import TabView from './tabView.js';
+import DataRetrieve from './dataRetrieve.js';
 
 // Class : Login
 // Holds the Login Elements and Functionalities
@@ -30,7 +31,7 @@ export default class Login extends React.Component {
 
     login() {
         this.props.navigator.replace({
-            id: 'TabView',
+            id: 'DataRetrieve',
             sceneConfig: Navigator.SceneConfigs.HorizontalSwipeJump
         });
     }

@@ -12,6 +12,7 @@ import Home from './components/home.js';
 import Calendar from './components/calendar.js';
 import DigiSign from './components/digiSign.js';
 import TabView from './components/tabView.js';
+import DataRetrieve from './components/dataRetrieve.js';
 
 // Initial Load function
 var KBESample = React.createClass({
@@ -55,6 +56,11 @@ var KBESample = React.createClass({
         else if (routeId === 'TabView') {
             return (
                 <TabView navigator={navigator} />
+            );
+        }
+        else if (routeId === 'DataRetrieve') {
+            return (
+                <DataRetrieve navigator={navigator} />
             );
         }
         return this.noRoute(navigator);
